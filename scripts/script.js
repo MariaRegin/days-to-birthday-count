@@ -4,12 +4,16 @@ const daysToBirthday = document.getElementById("days-to-birthday");
 
 function calcDaysToBirthday() {
   let dateOfBirtValue = dateOfBirthInput.value;
-  console.log(dateOfBirtValue);
   const date = new Date();
   const daysDiffMilleseconds = new Date(dateOfBirtValue) - date;
   const daysDiff = Math.ceil(daysDiffMilleseconds / (1000 * 60 * 60 * 24));
   let result;
-  if (daysDiff == 0 || (daysDiff >= 5 && daysDiff <= 20)) {
+
+  if (dateOfBirtValue === "") {
+    result = "Выберите дату";
+  } else if (daysDiff < 0) {
+    result = "Выберите будущую дату";
+  } else if (daysDiff == 0 || (daysDiff >= 5 && daysDiff <= 20)) {
     result = `До дня рождения осталось ${daysDiff} дней`;
   } else if (daysDiff == 1 || daysDiff % 10 == 1) {
     result = `До дня рождения остался ${daysDiff} день`;
@@ -20,8 +24,6 @@ function calcDaysToBirthday() {
     daysDiff % 10 == 4
   ) {
     result = `До дня рождения осталось ${daysDiff} дня`;
-  } else if (isNaN(dateOfBirthInput)) {
-    result = "Выберите дату";
   } else {
     result = `До дня рождения осталось ${daysDiff} дней`;
   }
