@@ -29,7 +29,7 @@ function calcDaysToBirthday() {
   }
 
   daysToBirthday.textContent = result;
-  dateOfBirtValue = "";
+  dateOfBirthInput = "";
 }
 
 submitDateButton.addEventListener("click", calcDaysToBirthday);
